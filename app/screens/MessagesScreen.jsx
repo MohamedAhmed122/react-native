@@ -33,6 +33,7 @@ const initialState =[
 ]
 
 const [items, setItems] =useState(initialState)
+const [refreshing,setRefreshing] =useState(false)
 
 const handleDeleteMsg =(message)=>{
     setItems(items.filter(item =>  item.id !== message.id))
@@ -53,6 +54,8 @@ return (
                 />
             }
             ItemSeparatorComponent={ListItemDivider}
+            refreshing={refreshing}
+            onRefresh={()=>setItems(items)}
         />
     </SafeAreaView>
 )
@@ -61,7 +64,8 @@ return (
 
 const styles = StyleSheet.create({
 screen:{
-    paddingTop: Constants.statusBarHeight
+    paddingTop: Constants.statusBarHeight,
+    flex: 1
 },
 divider:{
     width: '100%', 
