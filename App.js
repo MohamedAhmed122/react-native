@@ -6,7 +6,7 @@ import ListDetailsScreen from "./app/screens/ListDetialsScreen";
 
 export default function App() {
   return (
-    <ListDetailsScreen />
+    <ViewImageScreen />
   );
 }
 

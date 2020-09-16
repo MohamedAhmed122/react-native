@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Image, View } from "react-native";
 import {black, secondary} from '../config/Color'
 import AppText from "../Components/AppText";
+import ListItem from "../Components/ListItem";
 
 export default function ListDetailsScreen() {
   return (
@@ -10,6 +11,13 @@ export default function ListDetailsScreen() {
         <View style={styles.container}>
             <AppText style={styles.title}>White Chair for sale</AppText>
             <AppText style={styles.subTitle} >$100</AppText>
+            <View style={{marginTop: 30}}>
+                <ListItem
+                    image={require('../../assets/person.png')}
+                    title='Mohamed Youssef'
+                    subTitle='5 Listening'
+                />
+            </View>
         </View>
     </View>
   );
