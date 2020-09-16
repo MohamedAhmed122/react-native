@@ -2,11 +2,13 @@ import React from "react";
 import { StyleSheet, Text, View, ImageBackground, Image } from "react-native";
 
 import {secondary , primary} from '../config/Color'
+import AppButton from '../Components/Button'
 
 
 export default function WelcomeScreen() {
 return (
     <ImageBackground
+        blurRadius={7}
         style={styles.image}
         source={require("../../assets/background.jpg")}
     >
@@ -18,8 +20,8 @@ return (
             <Text style={styles.textLogo}>Sell what you don't need</Text>
         </View>
         
-        <View style={styles.loginBtn}/>
-        <View style={styles.registerBtn}/>
+        <AppButton  title='Login'/>
+        <AppButton  colors={secondary} title='Register'/>
     </ImageBackground>
 );
 }
@@ -51,6 +53,8 @@ logo:{
     
 },
 textLogo:{
-    marginTop: 5
+    marginTop: 10,
+    fontSize:20,
+    fontWeight: 'bold'
 }
 });
