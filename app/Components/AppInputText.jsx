@@ -1,14 +1,24 @@
 import React from 'react'
 import { StyleSheet, Text, View,TextInput } from 'react-native'
-
+import defaultStyle from '../config/defaultStyle'
 import {lightGray,dark, gray} from '../config/Color'
-
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function AppInputText({icon,placeholder, ...otherProps}) {
     return (
         <View style={styles.container}>
-            {icon &&  <MaterialCommunityIcons style={{marginRight:5}} name={icon} size={30} color={gray}/> }
-            <TextInput style={styles.input} {...otherProps} placeholder={placeholder}/>
+            {icon &&  
+                <MaterialCommunityIcons 
+                    style={{marginRight:5}} 
+                    name={icon} 
+                    size={25} 
+                    color={gray}
+            /> }
+            <TextInput 
+                style={defaultStyle.text} 
+                {...otherProps} 
+                placeholder={placeholder}
+            />
         </View>
     )
 }
