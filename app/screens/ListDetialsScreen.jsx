@@ -3,14 +3,23 @@ import { StyleSheet, Image, View } from "react-native";
 import {black, secondary} from '../config/Color'
 import AppText from "../Components/AppText";
 import ListItem from "../Components/ListItem";
+import { MaterialIcons } from '@expo/vector-icons';
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function ListDetailsScreen() {
   return (
     <View>
-        <Image source={require("../../assets/chair.jpg")} style={styles.image} />
+        <Image source={require("../../assets/product3.png")} style={styles.image} />
         <View style={styles.container}>
-            <AppText style={styles.title}>White Chair for sale</AppText>
-            <AppText style={styles.subTitle} >$100</AppText>
+            <View style={styles.subContainer}>
+                <View style={{flex:1}}>
+                    <AppText style={styles.title}>Jeans Jacket  for sale</AppText>
+                    <AppText style={styles.subTitle} >$100</AppText>
+                </View>
+                <TouchableOpacity>
+                    <MaterialIcons name="shopping-cart" size={24} color="gold" />
+                </TouchableOpacity>
+            </View>
             <View style={{marginTop: 30}}>
                 <ListItem
                     image={require('../../assets/person.png')}
@@ -38,5 +47,8 @@ title:{
 subTitle:{
     color: secondary,
     fontWeight: 'bold'
+},
+subContainer:{
+    flexDirection: 'row'
 }
 });

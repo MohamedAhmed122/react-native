@@ -35,7 +35,7 @@ export default function AccountScreen() {
             <View style={styles.container}>
                 <ListItem
                 title='Logout'
-                IconComponent={<Icons  name="logout" backgroundColor='#ffe66d'/>}
+                IconComponent={<Icons  name="login" backgroundColor='#ffe66d'/>}
                 />
             </View>
             

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { StyleSheet, View, SafeAreaView } from "react-native";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
@@ -12,21 +12,16 @@ import AppInputText from "./app/Components/AppInputText";
 import AppPicker from "./app/Components/AppPicker";
 import PickerScreen from "./app/screens/PickerScreen";
 
-const categories =[
-  {id: 1, label: 'Jackets', value:1},
-  {id: 2, label: 'Men',   value:2  },
-  {id: 3, label: 'Women', value: 3},
-  {id: 4, label: 'Sneakers', value:4},
-]
 
 export default function App() {
 
-  const [category, setCategory] = useState(categories[0])
+
 
   return (
-    <SafeAreaView>
-      <PickerScreen />
-    </SafeAreaView>
+      <Fragment>
+          <WelcomeScreen />
+      </Fragment>
+  
   ); 
 }
 

@@ -5,19 +5,20 @@ import {secondary , primary} from '../config/Color'
 import AppButton from '../Components/Button'
 
 
+
 export default function WelcomeScreen() {
 return (
     <ImageBackground
-        blurRadius={7}
+        blurRadius={10}
         style={styles.image}
-        source={require("../../assets/background.jpg")}
+        source={require("../../assets/Welcome.png")}
     >
         <View style={styles.logoContainer}>
             <Image
-                source={require('../../assets/logo-red.png')}
+                source={require('../../assets/logo.png')}
                 style={styles.logo}
             />
-            <Text style={styles.textLogo}>Sell what you don't need</Text>
+            <Text style={styles.textLogo}>SHWTY App</Text>
         </View>
         
         <AppButton  title='Login'/>
@@ -51,10 +52,12 @@ logo:{
     width: 100,
     height: 100,
     
+    
 },
 textLogo:{
     marginTop: 10,
     fontSize:20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'white'
 }
 });
