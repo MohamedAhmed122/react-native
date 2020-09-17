@@ -12,6 +12,7 @@ import AppInputText from "./app/Components/AppInputText";
 import AppPicker from "./app/Components/AppPicker";
 import PickerScreen from "./app/screens/PickerScreen";
 import LoginScreen from "./app/screens/LoginScreen";
+import RegisterScreen from "./app/screens/RegisterScreen";
 
 
 export default function App() {
@@ -20,7 +21,7 @@ export default function App() {
 
   return (
       <Fragment>
-          <LoginScreen />
+          <RegisterScreen />
       </Fragment>
   
   ); 

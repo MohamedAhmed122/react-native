@@ -7,27 +7,36 @@ import AppInputText from '../Components/AppInputText'
 import * as Yup from 'yup'
 import AppText from '../Components/AppText'
 import ErrorMessages from '../Components/ErrorMessages'
+import { secondary, primary } from '../config/Color'
 
 
 const validationSchema = Yup.object().shape({
+    name: Yup.string().required().label('Name'),
     email: Yup.string().required().email().label('Email'),
     password : Yup.string().required().min(4).label('Password'),
 })
 
-export default function LoginScreen() {
+export default function RegisterScreen() {
 
     return (
         <SafeAreaView style={styles.screen}>
-            <Image 
-            style={styles.logo}
-            source={require('../../assets/logo.png')} />
             <Formik
-                initialValues={{email: '', password: ''}}
+                initialValues={{email: '', password: '', name: ''}}
                 onSubmit={(values) =>console.log(values)}
                 validationSchema={validationSchema}
             >
                 {({handleChange, handleSubmit, errors, setFieldTouched, touched})=>(
                     <Fragment>
+                        <AppInputText 
+                            autoCapitalize='none'
+                            autoCorrect={false}
+                            icon='account'
+                            onBlur={()=>setFieldTouched('name')}
+                            placeholder='Name'
+                            textContentType='name'
+                            onChangeText={handleChange('name')}
+                        />
+                        {touched.name && <ErrorMessages error={errors.name} />}
                         <AppInputText 
                             autoCapitalize='none'
                             autoCorrect={false}
@@ -52,7 +61,8 @@ export default function LoginScreen() {
                         {touched.password &&<ErrorMessages error={errors.password} />}
                         <AppButton 
                             style={styles.btnOverride} 
-                            title='Login' 
+                            title='Register' 
+                            colors={secondary}
                             onPress={handleSubmit} 
                         />
                     </Fragment>
@@ -66,15 +76,10 @@ const styles = StyleSheet.create({
 screen:{
     paddingTop: Constants.statusBarHeight,
     flex: 1,
+    marginTop: 40,
     
 },
-logo:{
-    width:80,
-    height:80,
-    alignSelf: 'center',
-    marginTop: 50,
-    marginBottom: 20
-},
+
 btnOverride:{
     marginTop: 15,
 }
