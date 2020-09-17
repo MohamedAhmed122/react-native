@@ -9,7 +9,7 @@ export default function AppInputText({icon,placeholder, ...otherProps}) {
         <View style={styles.container}>
             {icon &&  
                 <MaterialCommunityIcons 
-                    style={{marginRight:5}} 
+                    style={{marginRight:15}} 
                     name={icon} 
                     size={25} 
                     color={gray}

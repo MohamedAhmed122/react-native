@@ -11,6 +11,7 @@ import ListingsScreen from "./app/screens/ListingsScreen";
 import AppInputText from "./app/Components/AppInputText";
 import AppPicker from "./app/Components/AppPicker";
 import PickerScreen from "./app/screens/PickerScreen";
+import LoginScreen from "./app/screens/LoginScreen";
 
 
 export default function App() {
@@ -19,7 +20,7 @@ export default function App() {
 
   return (
       <Fragment>
-          <WelcomeScreen />
+          <LoginScreen />
       </Fragment>
   
   ); 
