@@ -1,27 +1,37 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { useFormikContext } from 'formik'
-import ErrorMessages from '../Field/ErrorMessages'
+import React from "react";
+import { useFormikContext } from "formik";
 
-export default function FormImage({name}) {
-    const {setFieldValue, values, errors, touched } = useFormikContext()
+import ErrorMessage from "../Field/ErrorMessages";
+import ListImages from "../ImageCustomize/ListImages";
 
-    const handleRemove =(uri)=>{
-        setFieldValue(name,[...values[name], uri])
-    }
-    
-    const handleRemove =(uri)=>{
-        setFieldValue(name,values[name].filter(image => image !== uri))
-    }
-    return (
-        <View>
-            <ListImages imageUris={values[name]} onAddImag={handleRemove} onRemoveImage={handleRemove} />
-            {touched[name] && <ErrorMessages error={errors[name]} />}
-        </View>
-    )
+function FormImagePicker({ name }) {
+  const { errors, setFieldValue, touched, values } = useFormikContext();
+  const imageUris = values[name];
+
+  const handleAdd = (uri) => {
+    setFieldValue(name, [...imageUris, uri]);
+  };
+
+  const handleRemove = (uri) => {
+    setFieldValue(
+      name,
+      imageUris.filter((imageUri) => imageUri !== uri)
+    );
+  };
+
+  return (
+    <>
+      <ListImages
+        imageUris={imageUris}
+        onAddImage={handleAdd}
+        onRemoveImage={handleRemove}
+      />
+      <ErrorMessage error={errors[name]}  />
+    </>
+  );
 }
 
-const styles = StyleSheet.create({})
+export default FormImagePicker;
 
 
 

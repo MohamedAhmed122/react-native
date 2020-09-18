@@ -6,13 +6,14 @@ import AppFormPicker from '../Components/Field/AppFormPicker';
 import AppInputField from "../Components/Field/AppInputField";
 import SubmitButton from "../Components/Field/SubmitButton";
 import AppForm from "../Components/Field/AppForm";
+import FormImage from '../Components/ImageCustomize/FormImage'
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required(),
   description: Yup.string().required(),
   price: Yup.string().required(),
-  category: Yup.string().required(),
-  image: Yup.array().min(1)
+  category: Yup.string().required(''),
+  images: Yup.array().min(1, 'At least insert one image')
 });
 const categories = [
   { id: 1, label: "Jackets", value: 1 },
@@ -30,10 +31,12 @@ export default function ListForm() {
           description: "",
           price: "",
           category: null,
+          images: [],
         }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
+        <FormImage name='images'/>
         <AppInputField
           maxLength={225}
           autoCorrect={false}
