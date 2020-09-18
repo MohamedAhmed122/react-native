@@ -24,7 +24,6 @@ export default function PickerScreen() {
             onSelected={setCategory}
             icon='apps'
           />
-        <AppInputText  placeholder='username'/>
       </SafeAreaView>
     )
 }

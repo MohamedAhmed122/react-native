@@ -15,7 +15,7 @@ export default function Card({title, subTitle, image}) {
                     <AppText style={styles.SubTitle}>{subTitle}</AppText>
                 </View>
                 <TouchableOpacity>
-                    <MaterialIcons style={{padding:30}} name="shopping-cart" size={24} color="black" />
+                    <MaterialIcons style={{padding:30}} name="shopping-cart" size={24} color={secondary} />
                 </TouchableOpacity>
             </View>
         </View>

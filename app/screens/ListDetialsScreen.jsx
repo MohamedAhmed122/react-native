@@ -17,16 +17,16 @@ export default function ListDetailsScreen() {
                     <AppText style={styles.subTitle} >$100</AppText>
                 </View>
                 <TouchableOpacity>
-                    <MaterialIcons name="shopping-cart" size={24} color="gold" />
+                    <MaterialIcons name="shopping-cart" size={24} color={secondary} />
                 </TouchableOpacity>
             </View>
-            <View style={{marginTop: 30}}>
+            {/* <View style={{marginTop: 30}}>
                 <ListItem
                     image={require('../../assets/person.png')}
                     title='Mohamed Youssef'
                     subTitle='5 Listening'
                 />
-            </View>
+            </View> */}
         </View>
     </View>
   );

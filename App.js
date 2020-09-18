@@ -13,6 +13,7 @@ import AppPicker from "./app/Components/AppPicker";
 import PickerScreen from "./app/screens/PickerScreen";
 import LoginScreen from "./app/screens/LoginScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
+import ListForm from "./app/screens/ListForm";
 
 
 export default function App() {
@@ -21,7 +22,7 @@ export default function App() {
 
   return (
       <Fragment>
-          <RegisterScreen />
+          <ListForm />
       </Fragment>
   
   ); 

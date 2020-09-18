@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react'
 import { StyleSheet, Image, SafeAreaView } from 'react-native'
-import {Formik} from 'formik'
 import Constants from 'expo-constants'
 import AppButton from '../Components/Button'
 import AppInputText from '../Components/AppInputText'
+import {Formik} from 'formik'
 import * as Yup from 'yup'
-import AppText from '../Components/AppText'
 import ErrorMessages from '../Components/ErrorMessages'
+import AppText from '../Components/AppText'
+import { secondary } from '../config/Color'
 
 
 const validationSchema = Yup.object().shape({
@@ -51,8 +52,8 @@ export default function LoginScreen() {
                         />
                         {touched.password &&<ErrorMessages error={errors.password} />}
                         <AppButton 
-                            style={styles.btnOverride} 
                             title='Login' 
+                            colors={secondary}
                             onPress={handleSubmit} 
                         />
                     </Fragment>
