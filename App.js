@@ -1,16 +1,27 @@
-import React, { useState, Fragment } from "react";
-import { StyleSheet, View, SafeAreaView } from "react-native";
+import React, { Fragment } from "react";
+import { StyleSheet,Button, View, SafeAreaView ,Image } from "react-native";
 
-import ListForm from "./app/screens/ListForm";
+
+
 
 
 export default function App() {
 
+  // const [imageUris,setImageUris] = useState([])
 
+  // const onAddImage =(uri)=>{
+  //   setImageUris([...imageUris, uri])
+  // }
+
+  // const handleRemove =(uri)=>{
+  //   setImageUris(imageUris.filter(image => image !== uri))
+  // }
 
   return (
       <Fragment>
-          <ListForm />
+        <SafeAreaView>
+          
+        </SafeAreaView>
       </Fragment>
   
   ); 

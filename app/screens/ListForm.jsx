@@ -12,6 +12,7 @@ const validationSchema = Yup.object().shape({
   description: Yup.string().required(),
   price: Yup.string().required(),
   category: Yup.string().required(),
+  image: Yup.array().min(1)
 });
 const categories = [
   { id: 1, label: "Jackets", value: 1 },
