@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import AppText from './AppText'
-import { danger } from '../config/Color';
+import AppText from '../AppText'
+import { danger } from '../../config/Color';
 
 export default function ErrorMessages({error}) {
     if(!error) return null;

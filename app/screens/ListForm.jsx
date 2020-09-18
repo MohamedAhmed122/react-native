@@ -1,75 +1,69 @@
-import React, {Fragment} from 'react'
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
-import Constants from 'expo-constants'
-import AppPicker from '../Components/AppPicker'
-import AppButton from '../Components/Button'
-import AppInputText from '../Components/AppInputText'
-import {Formik} from 'formik'
-import * as Yup from 'yup'
-import ErrorMessages from '../Components/ErrorMessages'
-import PickerScreen from './PickerScreen'
-import { secondary } from '../config/Color'
-
+import React from "react";
+import { StyleSheet, SafeAreaView } from "react-native";
+import Constants from "expo-constants";
+import * as Yup from "yup";
+import AppFormPicker from '../Components/Field/AppFormPicker';
+import AppInputField from "../Components/Field/AppInputField";
+import SubmitButton from "../Components/Field/SubmitButton";
+import AppForm from "../Components/Field/AppForm";
 
 const validationSchema = Yup.object().shape({
-    title: Yup.string().required(),
-    description : Yup.string().required(),
-    price: Yup.string().required(),
-})
-
+  title: Yup.string().required(),
+  description: Yup.string().required(),
+  price: Yup.string().required(),
+  category: Yup.string().required(),
+});
+const categories = [
+  { id: 1, label: "Jackets", value: 1 },
+  { id: 2, label: "Men", value: 2 },
+  { id: 3, label: "Women", value: 3 },
+  { id: 4, label: "Sneakers", value: 4 },
+  { id: 5, label: "Hats", value: 5 },
+];
 export default function ListForm() {
-    return (
-        <SafeAreaView style={styles.screen}>
-            <Formik
-                initialValues={{title: '',description:'', price: ''}}
-                onSubmit={(values) =>console.log(values)}
-                validationSchema={validationSchema}
-            >
-                {({handleChange, handleSubmit, errors, setFieldTouched, touched})=>(
-                    <Fragment>
-                        <AppInputText 
-                            autoCapitalize='none'
-                            autoCorrect={false}
-                            onBlur={()=>setFieldTouched('title')}
-                            placeholder='Title'
-                            onChangeText={handleChange('title')}
-                        />
-                        {touched.title && <ErrorMessages error={errors.title} />}
-                        <AppInputText
-                            placeholder='Price'
-                            autoCapitalize='none'
-                            onBlur={()=>setFieldTouched('price')}
-                            autoCorrect={false}
-                            onChangeText={handleChange('price')}
-                        />
-                        {touched.price &&<ErrorMessages error={errors.price} />}
-                        <PickerScreen />
-                        <AppInputText
-                            placeholder='Description'
-                            autoCapitalize='none'
-                            onBlur={()=>setFieldTouched('description')}
-                            autoCorrect={false}
-                            onChangeText={handleChange('description')}
-                        />
-                        {touched.description &&<ErrorMessages error={errors.description} />}
-                        <AppButton 
-                            style={styles.btn} 
-                            title='Post' 
-                            onPress={handleSubmit} 
-                        />
-                    </Fragment>
-                )}
-            </Formik>
-        </SafeAreaView>
-    )
+  return (
+    <SafeAreaView style={styles.screen}>
+      <AppForm
+        initialValues={{
+          title: "",
+          description: "",
+          price: "",
+          category: null,
+        }}
+        onSubmit={(values) => console.log(values)}
+        validationSchema={validationSchema}
+      >
+        <AppInputField
+          maxLength={225}
+          autoCorrect={false}
+          placeholder="Title"
+          name="title"
+        />
+        <AppInputField placeholder="Price" autoCorrect={false} name="price" />
+        <AppFormPicker
+          items={categories}
+          name="category"
+          placeholder="Category"
+        />
+        <AppInputField
+          keyboardType='numeric'
+          placeholder="Description"
+          multiline
+          autoCorrect={false}
+          name="description"
+        />
+        <SubmitButton title="Post" />
+      </AppForm>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
-screen:{
+  screen: {
     paddingTop: Constants.statusBarHeight,
-    flex: 1
-},
-btn:{
-    backgroundColor: 'yellow'
-}
-})
+    flex: 1,
+  },
+  btn: {
+    backgroundColor: "yellow",
+  },
+});

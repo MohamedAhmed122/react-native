@@ -11,7 +11,7 @@ const categories =[
     {id: 5, label: 'Hats', value:5},
 ]
 
-export default function PickerScreen() {
+export default function PickerScreen({name}) {
 
     const [category, setCategory] = useState(categories[0])
 
@@ -23,6 +23,7 @@ export default function PickerScreen() {
             selectedItem={category}
             onSelected={setCategory}
             icon='apps'
+            name={name}
           />
       </SafeAreaView>
     )

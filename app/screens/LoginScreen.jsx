@@ -2,12 +2,12 @@ import React, { Fragment } from 'react'
 import { StyleSheet, Image, SafeAreaView } from 'react-native'
 import Constants from 'expo-constants'
 import AppButton from '../Components/Button'
-import AppInputText from '../Components/AppInputText'
 import {Formik} from 'formik'
 import * as Yup from 'yup'
-import ErrorMessages from '../Components/ErrorMessages'
-import AppText from '../Components/AppText'
 import { secondary } from '../config/Color'
+import AppInputField from '../Components/Field/AppInputField'
+import SubmitButton from '../Components/Field/SubmitButton'
+import AppForm from '../Components/Field/AppForm'
 
 
 const validationSchema = Yup.object().shape({
@@ -17,49 +17,34 @@ const validationSchema = Yup.object().shape({
 
 export default function LoginScreen() {
 
-    return (
-        <SafeAreaView style={styles.screen}>
-            <Image 
-            style={styles.logo}
-            source={require('../../assets/logo.png')} />
-            <Formik
-                initialValues={{email: '', password: ''}}
-                onSubmit={(values) =>console.log(values)}
-                validationSchema={validationSchema}
-            >
-                {({handleChange, handleSubmit, errors, setFieldTouched, touched})=>(
-                    <Fragment>
-                        <AppInputText 
-                            autoCapitalize='none'
-                            autoCorrect={false}
-                            icon='email'
-                            keyboardType="email-address"
-                            onBlur={()=>setFieldTouched('email')}
-                            placeholder='Email'
-                            textContentType='emailAddress'
-                            onChangeText={handleChange('email')}
-                        />
-                        {touched.email && <ErrorMessages error={errors.email} />}
-                        <AppInputText
-                            placeholder='password'
-                            secureTextEntry
-                            autoCapitalize='none'
-                            onBlur={()=>setFieldTouched('password')}
-                            autoCorrect={false}
-                            icon='lock'
-                            textContentType='password'
-                            onChangeText={handleChange('password')}
-                        />
-                        {touched.password &&<ErrorMessages error={errors.password} />}
-                        <AppButton 
-                            title='Login' 
-                            colors={secondary}
-                            onPress={handleSubmit} 
-                        />
-                    </Fragment>
-                )}
-            </Formik>
-        </SafeAreaView>
+return (
+    <SafeAreaView style={styles.screen}>
+        <Image 
+        style={styles.logo}
+        source={require('../../assets/logo.png')} />
+        <AppForm
+            initialValues={{email: '', password: ''}}
+            onSubmit={(values) =>console.log(values)}
+            validationSchema={validationSchema}
+        >
+            <AppInputField
+                name='email' 
+                placeholder='Email' 
+                autoCorrect={false}
+                icon='email'
+                keyboardType="email-address"
+                textContentType='emailAddress'
+            />
+            <AppInputField 
+                name='password' 
+                textContentType='emailAddress'
+                secureTextEntry
+                placeholder='Password'
+                icon='lock'
+            />
+            <SubmitButton  title='Login'/>
+        </AppForm>
+    </SafeAreaView>
     )
 }
 
